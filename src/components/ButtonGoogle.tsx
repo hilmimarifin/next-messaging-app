@@ -48,7 +48,7 @@ export default function GoogleButton(): JSX.Element {
                 type: "standard",
                 theme: "filled_black",
                 // size: "small",
-                text: "continue_with",
+                text: "signup_with",
                 shape: "pill",
             });
 
