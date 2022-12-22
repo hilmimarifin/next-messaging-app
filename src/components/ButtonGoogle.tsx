@@ -9,7 +9,6 @@ export default function GoogleButton(): JSX.Element {
     const handleGoogle = (res: any) => {
         setLoading(true)
         fetch("http://localhost:4000/user/signup-google", {
-            // fetch("http://localhost:5152/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
