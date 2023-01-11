@@ -4,6 +4,11 @@ import Footer from './Footer';
 interface WrapperProps {
     children: React.ReactNode;
 }
+
+const removeLocalStorage = () => {
+    localStorage.clear()
+    window.location.reload()
+}
 const Wrapper: React.FC<WrapperProps> = ({ children }) => {
     return (
         <div className="drawer">
@@ -23,6 +28,8 @@ const Wrapper: React.FC<WrapperProps> = ({ children }) => {
                                 {/* <!-- Navbar menu content here --> */}
                                 <li><a>Navbar Item 1</a></li>
                                 <li><a>Navbar Item 2</a></li>
+                                <li onClick={removeLocalStorage}><a>Log out</a></li>
+
                             </ul>
                         </div>
                     </div>
