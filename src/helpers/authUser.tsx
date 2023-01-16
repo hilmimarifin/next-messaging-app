@@ -1,9 +1,9 @@
-import { GoogleCredential, SIGNIN_GOOGLE_URL, SIGNIN_URL, SIGNUP_GOOGLE_URL, SIGNUP_URL, SigninPayload, SignupPayload } from "../types/user"
+import { GoogleCredential, REFRESH_TOKEN_URL, SIGNIN_GOOGLE_URL, SIGNIN_URL, SIGNOUT_URL, SIGNUP_GOOGLE_URL, SIGNUP_URL, SigninPayload, SignupPayload } from "../types/user"
 import { api } from "./api"
 
 export const signin = async (data: SigninPayload) => {
     try {
-        const res = await api.post(SIGNIN_URL, data)
+        const res = await api.post(SIGNIN_URL, data, {withCredentials: true})
         const userData = await res.data.data
         localStorage.setItem("userData", JSON.stringify(userData))
         localStorage.setItem("token", userData.token)
@@ -49,3 +49,28 @@ export const signupGoogle = async (data: GoogleCredential) => {
     }
 
 }
+
+export const refreshToken = async () => {
+    try {
+        const res = await api.get(REFRESH_TOKEN_URL, {withCredentials: true})
+        const userData = await res.data.data
+        return userData
+    } catch (error) {
+        throw new Error('error found')
+    }
+
+}
+
+export const signout = async () => {
+    try {
+        console.log('log out');
+        await api.get(SIGNOUT_URL,  { headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}, withCredentials: true})
+        localStorage.clear()
+        window.location.reload()
+    } catch (error) {
+        return Error
+    }
+
+}
+
+

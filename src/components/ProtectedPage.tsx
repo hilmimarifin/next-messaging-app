@@ -7,13 +7,17 @@ type Props = {
 
 const ProtectedPage = (props: Props) => {
     const router = useRouter()
+    
     useEffect(() => {
         const token = localStorage.getItem("token")
+        console.log('windows pathname', window.location.pathname);
+
         if (!token) {
             router.push('/signin')
         }
         else {
-            router.push('/')
+            window.location.pathname === '/signin' || window.location.pathname === '/signup' ? router.push(`/`) : 
+            router.push(`${window.location.pathname}`)
         }
 
     }, [])

@@ -1,15 +1,18 @@
 import * as React from 'react'
 import Footer from './Footer';
+import { useRouter } from 'next/router';
+import { signout } from '../../helpers/authUser';
 
 interface WrapperProps {
     children: React.ReactNode;
 }
 
 const removeLocalStorage = () => {
-    localStorage.clear()
-    window.location.reload()
+
+    signout()
 }
 const Wrapper: React.FC<WrapperProps> = ({ children }) => {
+    const router = useRouter()
     return (
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -26,8 +29,8 @@ const Wrapper: React.FC<WrapperProps> = ({ children }) => {
                         <div className="flex-none hidden lg:block">
                             <ul className="menu menu-horizontal">
                                 {/* <!-- Navbar menu content here --> */}
-                                <li><a>Navbar Item 1</a></li>
-                                <li><a>Navbar Item 2</a></li>
+                                {/* <li><a>Navbar Item 1</a></li> */}
+                                <li onClick={()=> router.push("messages")}><a>Messages</a></li>
                                 <li onClick={removeLocalStorage}><a>Log out</a></li>
 
                             </ul>
