@@ -30,7 +30,7 @@ const Wrapper: React.FC<WrapperProps> = ({ children }) => {
                             <ul className="menu menu-horizontal">
                                 {/* <!-- Navbar menu content here --> */}
                                 {/* <li><a>Navbar Item 1</a></li> */}
-                                <li onClick={()=> router.push("messages")}><a>Messages</a></li>
+                                <li onClick={()=> router.push("/messages")}><a>Messages</a></li>
                                 <li onClick={removeLocalStorage}><a>Log out</a></li>
 
                             </ul>

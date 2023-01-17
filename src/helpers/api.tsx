@@ -50,8 +50,8 @@ api.interceptors.response.use((response) => {
   if (err.response) {
     // Access Token was expired
     if (err.response.status === 401) {
-      localStorage.clear()
-      window.location.reload()
+      // localStorage.clear()
+      // window.location.reload()
       return Promise.reject(err)
     } else {
       return Promise.reject(err);
