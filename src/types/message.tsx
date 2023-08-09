@@ -7,6 +7,7 @@ export interface IMessage {
     receiverId: string,
     text: string,
     unread: number,
+    createdAt: string
 }
 
 export interface IDetailMessage {

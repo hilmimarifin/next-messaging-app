@@ -12,7 +12,7 @@ interface PageWrapperProps {
 
 const defaultDescription = 'Kemeja Berkualitas'
 const defaultKeywords = 'kemeja, bandung, grosir'
-const defaultTitle = 'Geniouz ID';
+const defaultTitle = 'Messaging App';
 const defaultAuthor = 'ozhilmi'
 
 
@@ -79,7 +79,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ pageTitle, children, descript
                     <meta key={attributes.name || attributes.property} {...attributes} />
                 ))}
             </Head>
-            <Wrapper>
+            <Wrapper title={title}>
                 <div className='flex justify-between'>
                     {children}
                 </div>
